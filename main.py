@@ -2,6 +2,32 @@ import usuario as usuario
 import menu 
 import mensagem_customizada
 
+def listInformationUser(usuario):
+  print('\nLista de usuarios cadastrados:\n');
+  
+  print('========================================\n');
+  print('Nome: ' + usuario['name']);
+  print('Email: ' + usuario['email']);
+  print('Data de nascimento ' + usuario['data_de_nascimento']);
+  print('CPF: ' + usuario['cpf']);
+  print('RG: ' + usuario['rg']);
+  print('Numero de filhos: ' + usuario['numero_filhos']);
+  print('\nCategorias:\n')
+
+  for y in usuario['categorias']:
+    if y == '1':
+      print('- Funcionários');
+    if y == '2':
+      print('- Voluntários');
+    if y == '3':
+      print('- Doadores'); 
+    if y == '4':
+      print('- Atendidos');
+    if y == '5':
+      print('- Visitantes');
+
+  print('\n========================================');
+
 mensagem_customizada.bem_vindo();
 
 usuarios = [];
@@ -12,9 +38,15 @@ while True:
   if option == '1':
     usuarios = usuario.registrar_usuario(usuarios);
 
+    if len(usuarios) == 0:
+      print('Nenhum usuario cadastrado');
+    else:
+      for x in usuarios:
+        listInformationUser(x)
+
     voltar_menu = input('\n\nDeseja voltar para o menu?\nDigite 1 para sim, e 0 para Não -> ');
     if(voltar_menu == '0'):
-      break;  
+      break; 
 
   if option == '2':
     if len(usuarios) == 0:
@@ -37,20 +69,13 @@ while True:
           if  nome in _usuario['name']:
             resultado_pesquisa.append(_usuario);
 
-      print(resultado_pesquisa);
+      print(resultado_pesquisa); 
+      for y in resultado_pesquisa:
+        listInformationUser(y);
+      # FAZER AQUI A PARADA DE LISTAR A PARADA
       
       voltar_menu = input('\n\nDeseja voltar para o menu?\nDigite 1 para sim, e 0 para Não -> ');
       if(voltar_menu == '0'):
         break;  
 
-
-       #encontrar a rapaziada
-       #Pode nao ter registro na parada
-       #Pode nao encontrar
-       #Pode encontrar 2
-
-    
-
-
-# print(usuarios);
 
