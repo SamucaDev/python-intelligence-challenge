@@ -1,6 +1,6 @@
 #TO DO:
 # Verificar se a categoria ja existe na parada
-
+import avl
 import menu;
 def selecionar_categoria():
   categorias = [];
@@ -27,7 +27,7 @@ def selecionar_categoria():
     if(proxima_categoria == '0'):
       return categorias;
 
-def inserir_dados(usuarios):
+def inserir_dados(usuarios, no):
   categorias         = selecionar_categoria();
   name               = input('\n\nDigite seu nome: ');
   data_de_nascimento = input('Digite sua data de nascimento: ');
@@ -36,7 +36,7 @@ def inserir_dados(usuarios):
   rg                 = input('Digite seu rg: ');
   numero_filhos      = input('Digite quantos filhos voce tem: ');
 
-  usuarios.append({
+  usuario = {
     'name'              : name,
     'data_de_nascimento': data_de_nascimento,
     'email'             : email,
@@ -44,7 +44,9 @@ def inserir_dados(usuarios):
     'rg'                : rg,
     'numero_filhos'     : numero_filhos,
     'categorias'        : categorias
-  });
+  };
+
+  usuarios.append(usuario);
 
   outro_usuario = input('\n\nDeseja cadastrar outra pessoal?\nDigite 1 para sim, e 0 para Não -> ')
 
@@ -53,7 +55,32 @@ def inserir_dados(usuarios):
     usuarios
   ];
 
-def registrar_usuario(usuarios):
+def registrar_usuario(usuarios, no):
   while True:
-    if(inserir_dados(usuarios)[0] == '0'):
+    if(inserir_dados(usuarios,no)[0] == '0'):
       return usuarios;
+
+def listInformationUser(usuario):
+  print('\nLista de usuarios cadastrados:');
+  print('========================================\n');
+  print('Nome: ' + usuario['name']);
+  print('Email: ' + usuario['email']);
+  print('Data de nascimento ' + usuario['data_de_nascimento']);
+  print('CPF: ' + usuario['cpf']);
+  print('RG: ' + usuario['rg']);
+  print('Numero de filhos: ' + usuario['numero_filhos']);
+  print('\nCategorias:\n')
+
+  for y in usuario['categorias']:
+    if y == '1':
+      print('- Funcionários');
+    if y == '2':
+      print('- Voluntários');
+    if y == '3':
+      print('- Doadores'); 
+    if y == '4':
+      print('- Atendidos');
+    if y == '5':
+      print('- Visitantes');
+
+  print('\n========================================');

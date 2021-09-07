@@ -2,7 +2,7 @@ def listar_menu():
   print('\n\nSelecione uma das opcoes:');
   print('1 - Inserir');
   print('2 - Consultar');
-  print('3 - Excluir');
+  print('3 - Listar');
   print('\n\n');
   
   return input('Número da opção: ');
@@ -24,3 +24,9 @@ def list_usuarios():
   print('5 - Visitantes');
 
   return input('\n\nDigite o código da categoria -> ');
+
+def list_options_list():
+  print('\n\nSelecione a categoria deste usuário:');
+  print('1 - Ordem de chegada');
+  
+  return input('Número da opção: ');
